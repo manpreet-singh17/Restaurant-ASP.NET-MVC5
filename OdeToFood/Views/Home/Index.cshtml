@@ -1,0 +1,72 @@
+﻿@model IPagedList<RestaurantListViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<form method="get" action="@Url.Action("Index")" data-otf-ajax="true" 
+      data-otf-target="#restaurantList" class="form-inline" >
+
+    <div class="form-group">
+
+        <label for="searchTerm">Search: </label>
+        <input type="search" class="form-control" name="searchTerm" 
+               data-otf-autocomplete="@Url.Action("AutoComplete")" />
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-info" value="Search!!" />
+    </div>
+</form>
+<br />
+
+<hr />
+<br />
+
+@{ 
+    var currency = 10.0m;
+    var AnyDate = new DateTime(2002, 7, 9);
+    string name = "manpreet singh";
+}
+
+<div>
+    @OdeToFood.Views.Home.Resources.Greeting
+</div>
+
+<div>
+    @currency.ToString("c")
+</div>
+<div>
+    @AnyDate.ToShortDateString()
+</div>
+
+<div>
+    @name.ToString()
+</div>
+
+<hr />
+<br />
+
+@Html.Partial("_RestaurantList", Model)
+
+<br />
+
+
+@*@using (Ajax.BeginForm(new AjaxOptions
+{
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "restaurantList"
+}))
+{
+    <div class="form-group">
+        
+        <input type="search" class="form-control" name="searchTerm" placeholder="Search by Name"/>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-info" value="Search!!" />
+    </div>
+}*@
+
+ 
